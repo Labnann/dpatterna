@@ -8,7 +8,13 @@
     red3: "red/3"
   };
 
-  let src = `./images/light-receiver/${commands["on"]}.png`;
+  let src ;
+
+  const setLightStatus = (status) =>{
+    src = `./images/light-receiver/${commands[status]}.png`;
+  }
+
+  setLightStatus("on");
 
 </script>
 
