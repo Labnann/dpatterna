@@ -1,7 +1,11 @@
 <script>
   let commands = {
     on: "on",
+    off: "off",
+    red0: "red/0",
     red1: "red/1",
+    red2: "red/2",
+    red3: "red/3"
   };
 
   let src = `./images/light-receiver/${commands["on"]}.png`;
