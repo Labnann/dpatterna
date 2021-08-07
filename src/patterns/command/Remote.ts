@@ -1,12 +1,14 @@
-import * as console from "console";
+import {HtmlTag} from "svelte/internal";
+import {SvelteComponent} from "svelte";
 
-interface CommandInterface{
+
+interface ICommand{
     execute() : void;
     unExecute() : void;
 }
 
 export class Light {
-    get light(): any {
+    get light(): SvelteComponent {
         return this._light;
     }
 
@@ -20,13 +22,14 @@ export class Light {
     };
 
 
-   private readonly _light : any ;
+   private readonly _light : SvelteComponent ;
 
     private _red_status = 0;
     private _is_red = false;
 
-    constructor(light : any) {
+    constructor(light : SvelteComponent) {
         this._light = light;
+
         // this.light.bind(light);
     }
 
@@ -34,6 +37,7 @@ export class Light {
     turnOn(){
         this._light.src = `./images/light-receiver/on.png`;
         this._is_red = false;
+
     }
 
     turnOff(){
@@ -70,14 +74,61 @@ export class Light {
 }
 
 
-class LightCommand implements CommandInterface{
+class LightCommand implements ICommand{
+
+    private _light : Light;
+    constructor(light : Light) {
+        this._light = light;
+    }
 
 
 
     execute(): void {
+        this._light.turnOn();
+
     }
 
     unExecute(): void {
+        this._light.turnOff();
+    }
+
+}
+
+
+class RedCommand implements ICommand{
+
+    private _light : Light;
+    constructor(light : Light) {
+        this._light = light;
+    }
+
+
+    execute(): void {
+
+        this._light.makeRed();
+    }
+
+    unExecute(): void {
+    }
+
+}
+
+class RedIntensifierCommand implements ICommand{
+
+    private _light : Light;
+    constructor(light : Light) {
+        this._light = light;
+    }
+
+
+    execute(): void {
+        this._light.increaseRed();
+
+    }
+
+    unExecute(): void {
+
+        this._light.decreaseRed();
     }
 
 }
@@ -87,16 +138,30 @@ class LightCommand implements CommandInterface{
 
 
 export class Remote {
-
-     _commands = {
-        on: "on",
-        off: "off",
-        red0: "red/0",
-        red1: "red/1",
-        red2: "red/2",
-        red3: "red/3"
-    };
+    commands: ICommand[] = [];
 
 
+    constructor(light: Light) {
+        this.commands.push(new LightCommand(light));
+        this.commands.push(new RedCommand(light));
+        this.commands.push(new RedIntensifierCommand(light));
+    }
+
+
+    executeCommand(command: ELightCommand){
+        this.commands[command].execute();
+    }
+
+    unExecuteCommand(command: ELightCommand){
+        this.commands[command].unExecute();
+    }
+
+}
+
+export enum ELightCommand{
+
+         POWER = 0,
+         RED = 1,
+         RED_INTENSITY = 2
 
 }

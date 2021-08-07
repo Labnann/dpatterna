@@ -12,6 +12,7 @@
   onMount(()=>{
     lightImg.src = `./images/light-receiver/off.png`;
     light = new Light(lightImg);
+    console.log( typeof light);
   })
 
 
