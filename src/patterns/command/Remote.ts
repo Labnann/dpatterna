@@ -162,6 +162,6 @@ export enum ELightCommand{
 
          POWER = 0,
          RED = 1,
-         RED_INTENSITY = 2
+         RED_INTENSITY_UP = 2
 
 }

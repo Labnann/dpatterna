@@ -82,10 +82,10 @@
   <button class="on" on:click={remote.executeCommand(ELightCommand.POWER)}>On</button>
   <button class="off" on:click={remote.unExecuteCommand(ELightCommand.POWER)}>Off</button>
 
-  <button class="increase-lum"  on:click={light.increaseRed()}>+</button>
-  <button class="decrease-lum"  on:click={light.decreaseRed()}>-</button>
+  <button class="increase-lum"  on:click={remote.executeCommand(ELightCommand.RED_INTENSITY_UP)}>+</button>
+  <button class="decrease-lum"  on:click={remote.unExecuteCommand(ELightCommand.RED_INTENSITY_UP)}>-</button>
 
-  <button class="red-light" on:click={light.makeRed()}>Red</button>
+  <button class="red-light" on:click={remote.executeCommand(ELightCommand.RED)}>Red</button>
 </div>
 
 <div class="portrait"><img {src} bind:this={lightImg} alt={src} /></div>
