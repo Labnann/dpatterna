@@ -79,10 +79,10 @@
   <button class="on" on:click={light.turnOn()}>On</button>
   <button class="off" on:click={light.turnOff()}>Off</button>
 
-  <button class="increase-lum">+</button>
-  <button class="decrease-lum">-</button>
+  <button class="increase-lum"  on:click={light.increaseRed()}>+</button>
+  <button class="decrease-lum"  on:click={light.decreaseRed()}>-</button>
 
-  <button class="red-light">Red</button>
+  <button class="red-light" on:click={light.makeRed()}>Red</button>
 </div>
 
 <div class="portrait"><img {src} bind:this={lightImg} alt={src} /></div>
