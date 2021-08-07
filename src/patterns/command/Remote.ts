@@ -55,7 +55,7 @@ export class Light {
         this._updateRed();
     }
 
-    _updateRed(){
+    private _updateRed(){
         if(this._is_on &&this._is_red)
         this._light.src = `./images/light-receiver/red/${this._red_status}.png`;
     }
