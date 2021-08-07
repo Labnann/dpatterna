@@ -15,7 +15,8 @@ export class Light {
    private readonly _light : SvelteComponent ;
 
     private _red_status = 0;
-    private _is_on = false;
+    private _is_on = true;
+    private  _is_red = false;
 
     constructor(light : SvelteComponent) {
         this._light = light;
@@ -27,7 +28,7 @@ export class Light {
     turnOn(){
         this._light.src = `./images/light-receiver/on.png`;
         this._is_on = true;
-
+        this._is_red = false;
     }
 
     turnOff(){
@@ -37,6 +38,7 @@ export class Light {
 
     makeRed(){
         if(!this._is_on) return;
+        this._is_red = true;
         this._updateRed();
 
     }
@@ -54,7 +56,7 @@ export class Light {
     }
 
     _updateRed(){
-        if(this._is_on)
+        if(this._is_on &&this._is_red)
         this._light.src = `./images/light-receiver/red/${this._red_status}.png`;
     }
 
