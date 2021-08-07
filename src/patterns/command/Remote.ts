@@ -1,4 +1,3 @@
-import {HtmlTag} from "svelte/internal";
 import {SvelteComponent} from "svelte";
 
 
@@ -11,15 +10,6 @@ export class Light {
     get light(): SvelteComponent {
         return this._light;
     }
-
-    private  _lightStatus = {
-        on: "on",
-        off: "off",
-        red0: "red/0",
-        red1: "red/1",
-        red2: "red/2",
-        red3: "red/3"
-    };
 
 
    private readonly _light : SvelteComponent ;
@@ -141,7 +131,8 @@ export class Remote {
     commands: ICommand[] = [];
 
 
-    constructor(light: Light) {
+    constructor(lightImg: SvelteComponent) {
+        const light = new Light(lightImg);
         this.commands.push(new LightCommand(light));
         this.commands.push(new RedCommand(light));
         this.commands.push(new RedIntensifierCommand(light));

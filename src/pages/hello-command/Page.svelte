@@ -1,24 +1,19 @@
 <script>
   import {onMount} from "svelte";
-  import {Light, Remote} from "../../patterns/command/Remote";
+  import {Remote} from "../../patterns/command/Remote";
   import {ELightCommand} from "../../patterns/command/Remote";
 
 
 
   let src  =`./images/light-receiver/on.png`;
-
   let lightImg;
-  let light;
   let remote;
 
   onMount(()=>{
-    lightImg.src = `./images/light-receiver/off.png`;
-    light = new Light(lightImg);
-    remote = new Remote(light);
+    remote = new Remote(lightImg);
   })
 
 
-  setTimeout(()=>{console.log(light.turnOn())},3000);
 
 
 
