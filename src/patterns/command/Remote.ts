@@ -33,7 +33,6 @@ export class Light {
     turnOff(){
         this._is_on = false;
         this._light.src = `./images/light-receiver/off.png`;
-        this._red_status = 0;
     }
 
     makeRed(){
