@@ -2,14 +2,7 @@
   import {onMount} from "svelte";
   import {Light} from "../../patterns/command/Remote";
 
-  let commands = {
-    on: "on",
-    off: "off",
-    red0: "red/0",
-    red1: "red/1",
-    red2: "red/2",
-    red3: "red/3"
-  };
+
 
   let src  =`./images/light-receiver/on.png`;
 
@@ -83,8 +76,8 @@
 <h1>Command buttons</h1>
 
 <div class="btn-group">
-  <button class="on">On</button>
-  <button class="off">Off</button>
+  <button class="on" on:click={light.turnOn()}>On</button>
+  <button class="off" on:click={light.turnOff()}>Off</button>
 
   <button class="increase-lum">+</button>
   <button class="decrease-lum">-</button>

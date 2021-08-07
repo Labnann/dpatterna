@@ -31,6 +31,9 @@ export class Light {
 
 
 class LightCommand implements CommandInterface{
+
+
+
     execute(): void {
     }
 
