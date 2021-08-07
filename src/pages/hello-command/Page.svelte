@@ -1,4 +1,7 @@
 <script>
+  import {onMount} from "svelte";
+  import {Light} from "../../patterns/command/Remote";
+
   let commands = {
     on: "on",
     off: "off",
@@ -8,13 +11,27 @@
     red3: "red/3"
   };
 
-  let src ;
+  let src  =`./images/light-receiver/on.png`;
 
-  const setLightStatus = (status) =>{
-    src = `./images/light-receiver/${commands[status]}.png`;
+  let lightImg;
+  let light;
+
+  onMount(()=>{
+    lightImg.src = `./images/light-receiver/off.png`;
+    light = new Light(lightImg);
+  })
+
+
+  setTimeout(()=>{console.log(light.turnOn())},3000);
+
+
+
+  const turnOnLight = ()=>{
+    lightImg.src =`./images/light-receiver/on.png`;
   }
 
-  setLightStatus("on");
+
+
 
 </script>
 
@@ -75,4 +92,4 @@
   <button class="red-light">Red</button>
 </div>
 
-<div class="portrait"><img {src} alt={src} /></div>
+<div class="portrait"><img {src} bind:this={lightImg} alt={src} /></div>
