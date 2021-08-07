@@ -1,6 +1,7 @@
 <script>
   import {onMount} from "svelte";
-  import {Light} from "../../patterns/command/Remote";
+  import {Light, Remote} from "../../patterns/command/Remote";
+  import {ELightCommand} from "../../patterns/command/Remote";
 
 
 
@@ -8,11 +9,12 @@
 
   let lightImg;
   let light;
+  let remote;
 
   onMount(()=>{
     lightImg.src = `./images/light-receiver/off.png`;
     light = new Light(lightImg);
-    console.log( typeof light);
+    remote = new Remote(light);
   })
 
 
@@ -77,8 +79,8 @@
 <h1>Command buttons</h1>
 
 <div class="btn-group">
-  <button class="on" on:click={light.turnOn()}>On</button>
-  <button class="off" on:click={light.turnOff()}>Off</button>
+  <button class="on" on:click={remote.executeCommand(ELightCommand.POWER)}>On</button>
+  <button class="off" on:click={remote.unExecuteCommand(ELightCommand.POWER)}>Off</button>
 
   <button class="increase-lum"  on:click={light.increaseRed()}>+</button>
   <button class="decrease-lum"  on:click={light.decreaseRed()}>-</button>
