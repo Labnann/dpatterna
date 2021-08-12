@@ -13,7 +13,6 @@ export class Light {
 
 
    private readonly _light : SvelteComponent ;
-
     private _red_status = 0;
     private _is_on = true;
     private  _is_red = false;
@@ -139,17 +138,17 @@ export class Remote {
     }
 
 
-    executeCommand(command: ELightCommand){
+    executeCommand(command: ELightControllerCommand){
         this.commands[command].execute();
     }
 
-    unExecuteCommand(command: ELightCommand){
+    unExecuteCommand(command: ELightControllerCommand){
         this.commands[command].unExecute();
     }
 
 }
 
-export enum ELightCommand{
+export enum ELightControllerCommand{
 
          POWER = 0,
          RED = 1,

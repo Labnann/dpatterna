@@ -1,7 +1,7 @@
 <script>
   import {onMount} from "svelte";
   import {Remote} from "../../patterns/command/Remote";
-  import {ELightCommand} from "../../patterns/command/Remote";
+  import {ELightControllerCommand} from "../../patterns/command/Remote";
 
 
 
@@ -74,13 +74,13 @@
 <h1>Command buttons</h1>
 
 <div class="btn-group">
-  <button class="on" on:click={remote.executeCommand(ELightCommand.POWER)}>On</button>
-  <button class="off" on:click={remote.unExecuteCommand(ELightCommand.POWER)}>Off</button>
+  <button class="on" on:click={remote.executeCommand(ELightControllerCommand.POWER)}>On</button>
+  <button class="off" on:click={remote.unExecuteCommand(ELightControllerCommand.POWER)}>Off</button>
 
-  <button class="increase-lum"  on:click={remote.executeCommand(ELightCommand.RED_INTENSITY_UP)}>+</button>
-  <button class="decrease-lum"  on:click={remote.unExecuteCommand(ELightCommand.RED_INTENSITY_UP)}>-</button>
+  <button class="increase-lum"  on:click={remote.executeCommand(ELightControllerCommand.RED_INTENSITY_UP)}>+</button>
+  <button class="decrease-lum"  on:click={remote.unExecuteCommand(ELightControllerCommand.RED_INTENSITY_UP)}>-</button>
 
-  <button class="red-light" on:click={remote.executeCommand(ELightCommand.RED)}>Red</button>
+  <button class="red-light" on:click={remote.executeCommand(ELightControllerCommand.RED)}>Red</button>
 </div>
 
 <div class="portrait"><img {src} bind:this={lightImg} alt={src} /></div>
