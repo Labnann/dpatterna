@@ -15,15 +15,6 @@
 
 
 
-
-
-  const turnOnLight = ()=>{
-    lightImg.src =`./images/light-receiver/on.png`;
-  }
-
-
-
-
 </script>
 
 <style>
