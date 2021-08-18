@@ -1,6 +1,6 @@
 <script>
   import {onMount} from "svelte";
-  import {Remote} from "../../patterns/command/Remote";
+  import {Light, Remote} from "../../patterns/command/Remote";
   import {ELightControllerCommand} from "../../patterns/command/Remote";
 
 
@@ -10,7 +10,8 @@
   let remote;
 
   onMount(()=>{
-    remote = new Remote(lightImg);
+    const light = new Light(lightImg);
+    remote = new Remote(light);
   })
 
 

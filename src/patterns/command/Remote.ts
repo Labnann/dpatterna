@@ -130,8 +130,7 @@ export class Remote {
     commands: ICommand[] = [];
 
 
-    constructor(lightImg: SvelteComponent) {
-        const light = new Light(lightImg);
+    constructor(light:Light) {
         this.commands.push(new LightCommand(light));
         this.commands.push(new RedCommand(light));
         this.commands.push(new RedIntensifierCommand(light));
@@ -144,6 +143,12 @@ export class Remote {
 
     unExecuteCommand(command: ELightControllerCommand){
         this.commands[command].unExecute();
+    }
+
+
+    test(){
+ 
+
     }
 
 }
